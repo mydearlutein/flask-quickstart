@@ -62,11 +62,15 @@
 
 from flask import Flask
 from flask_restful import Api
+
 from resources.foo import Foo
 from resources.bar import Bar
 from resources.baz import Baz
+import config
+
 
 app = Flask(__name__)
+app.config.from_object(config)
 api = Api(app)
 
 api.add_resource(Foo, '/Foo', '/Foo/<string:id>')
